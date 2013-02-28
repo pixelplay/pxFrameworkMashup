@@ -1,0 +1,352 @@
+/*---------------------------------------------------------------------------------------------------- FILE: _mixins.less */
+/* Reset and/or normalize browser styles for consistency */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden] {
+  display: none;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 18px;
+}
+html {
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  overflow-x: hidden;
+}
+body,
+select,
+input,
+textarea {
+  font-family: 'Segoe UI', 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-size: 1.2rem !important;
+  color: #1a1a1a;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Open Sans', 'Segoe UI', 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+pre,
+code,
+kbd,
+samp {
+  font-family: 'Monaco', 'Courier New', monospace;
+}
+a {
+  text-decoration: none;
+  color: #049cdb;
+}
+a:visited {
+  color: #049cdb;
+}
+a:hover {
+  color: #17b8fb;
+}
+a:focus {
+  outline: thin dotted;
+  color: #0378a9;
+}
+a:hover,
+a:active {
+  outline: 0;
+}
+::-moz-selection,
+::selection {
+  background-color: #049cdb;
+  color: #ffffff;
+  text-shadow: none;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+b,
+strong {
+  font-weight: bold;
+}
+blockquote {
+  margin: 18px 10px;
+}
+dfn {
+  font-style: italic;
+}
+mark {
+  background: #ffc40d;
+  color: #000000;
+}
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, serif;
+  _font-family: 'courier new', monospace;
+  font-size: 1em;
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+q {
+  quotes: none;
+}
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+small {
+  font-size: 9px;
+  font-size: 0.9rem;
+}
+sub,
+sup {
+  font-size: 9px;
+  font-size: 0.9rem;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -9px;
+}
+sub {
+  bottom: -4.5px;
+}
+ul,
+ol {
+  margin-left: 0;
+  padding: 0 0 0 40px;
+}
+dd {
+  margin: 0 0 0 40px;
+}
+nav ul,
+nav ol {
+  list-style: none;
+  list-style-image: none;
+  margin: 0;
+  padding-left: 0;
+}
+figure {
+  margin: 0;
+}
+figcaption {
+  display: block;
+  font-weight: normal;
+}
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+#map_canvas img {
+  max-width: none;
+}
+form {
+  margin: 0;
+}
+fieldset {
+  border: 1px solid #e6e6e6;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0;
+  padding: 0;
+  white-space: normal;
+  *margin-left: -7px;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: middle;
+}
+button,
+input {
+  line-height: normal;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  *overflow: visible;
+}
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0;
+  *height: 13px;
+  *width: 13px;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* ==================================================================================================== FONT AWESOME */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff') format('woff'), url('../fonts/fontawesome-webfont.ttf') format('truetype'), url('../fonts/fontawesome-webfont.svg#FontAwesome') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*  Font Awesome styles
+    ------------------------------------------------------- */
+/*  Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+    readers do not read off random characters that represent icons */
+/* \f020 doesn't work in Safari. all shifted one down */
+/*---------------------------------------------------------------------------------------------------- FILE: shapes.less */
+/* Mixins that define the default grid */
+/* Generic WordPress specific styles */
+img.alignleft {
+  float: left;
+  margin: 0 10px 18px 0;
+}
+img.alignright {
+  float: right;
+  margin: 0 0 18px 10px;
+}
+img.alignnone {
+  float: none;
+  margin: 0 0 18px 0;
+}
+/*---------------------------------------------------------------------------------------------------- FILE: 00-base */
+.container {
+  margin: 0 2.421875%;
+}
+header {
+  width: 100%;
+  margin: 0 1.5% 0 0%;
+  float: left;
+  zoom: 1;
+  margin-bottom: 18px;
+  background: #049cdb;
+}
+header:before,
+header:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+header:after {
+  clear: both;
+}
+header #site-name {
+  width: 17.53125%;
+  margin: 0 1.5% 0 0%;
+  float: left;
+  height: 36px;
+  background: rgba(0, 0, 0, 0.5);
+}
+header nav {
+  width: 68.28125%;
+  margin: 0 1.5% 0 0%;
+  float: left;
+  height: 36px;
+  background: rgba(0, 0, 0, 0.5);
+}
+.content-1 {
+  width: 74.625%;
+  margin: 0 1.5% 0 0%;
+  float: left;
+  height: 180px;
+  background: #808080;
+}
+.sidebar-1 {
+  width: 23.875%;
+  margin: 0 1.5% 0 0%;
+  float: left;
+  margin: 0;
+  height: 180px;
+  background: #808080;
+}
+.content-2 {
+  width: 23.875%;
+  margin: 0 1.5% 0 0%;
+  float: left;
+  height: 180px;
+  background: #808080;
+}
+.sidebar-2 {
+  width: 74.625%;
+  margin: 0 1.5% 0 0%;
+  float: left;
+  margin: 0;
+  height: 180px;
+  background: #808080;
+}
+footer {
+  width: 100%;
+  margin: 0 1.5% 0 0%;
+  float: left;
+  height: 180px;
+  background: #000000;
+}
+/*---------------------------------------------------------------------------------------------------- FILE: 01-header *//*---------------------------------------------------------------------------------------------------- FILE: 02-frontpage *//*---------------------------------------------------------------------------------------------------- FILE: 03-index *//*---------------------------------------------------------------------------------------------------- FILE: 98-sidebar *//*---------------------------------------------------------------------------------------------------- FILE: 99-footer */

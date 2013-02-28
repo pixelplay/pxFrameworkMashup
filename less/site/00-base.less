@@ -1,0 +1,65 @@
+/*---------------------------------------------------------------------------------------------------- FILE: 00-base */
+.container
+{
+	.container-fluid( @columnWidth / 2 );
+}
+
+header
+{
+	.column( 16 );
+	.clearfix();
+	.row();
+	background: @blue;
+
+	#site-name
+	{
+		.column( 3 );
+		.height( 2 );
+		background: fade( @black, 50 );
+	}
+
+	nav
+	{
+		.column( 11 );
+		.height( 2 );
+		background: fade( @black, 50 );
+	}
+}
+
+.content-1 
+{
+	.column( 12 );
+	.height( 10 );
+	background: @gray;
+}
+
+.sidebar-1
+{
+	.column( 4 );
+	.rm();
+	.height( 10 );
+	background: @gray;
+}
+
+.content-2
+{
+	.column( 4 );
+	.height( 10 );
+	background: @gray;
+}
+
+.sidebar-2
+{
+	.column( 12 );
+	.rm();
+	.height( 10 );
+	background: @gray;
+}
+
+
+footer
+{
+	.column( 16 );
+	.height( 10 );
+	background: @black;
+}

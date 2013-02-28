@@ -1,0 +1,31 @@
+// grid.less
+/* Mixins that define the default grid */
+
+// ==================================================================================================== FIXED WIDTH GRID
+
+
+
+// ==================================================================================================== FLUID WIDTH GRID
+.container-fluid( @margin )
+{
+	margin: 0 @margin;
+}
+
+.row()
+{
+	margin-bottom: @baseline;
+}
+
+.column( @cols: 1, @offset: 0 )
+{
+	width: ( @columnWidth * @cols ) + ( @gutterWidth * ( @cols - 1 ) );
+	margin: 0 @gutterWidth 0 ( @columnWidth * @offset ) + ( @gutterWidth * ( @offset ) );
+	float: left;
+}
+
+
+// ==================================================================================================== BOX HEIGHT
+.height( @lines: 1 )
+{
+	height: @baseline * @lines;
+}

@@ -1,0 +1,340 @@
+/*---------------------------------------------------------------------------------------------------- FILE: _mixins.less */
+//---------------------------------------------------------------------------------------------------- THE POWER OF LESS IS MORE - CLASS IN CLASS ACTION
+
+//==================================================================================================== UTILITY MIXINS
+//---------------------------------------------------------------------------------------------------- typography
+.headfonts() { font-family: @headFontStack; }
+.bodyfonts() { font-family: @bodyFontStack; }
+.codefonts() { font-family: @codeFontStack; }
+
+.font-size( @font-size: @baseFontSize )
+{
+	@rem: (@font-size / 10);
+	font-size : @font-size * 1px;
+	font-size : ~"@{rem}rem";
+}
+
+//---------------------------------------------------------------------------------------------------- clear fix
+.clearfix()
+{
+	zoom : 1;
+	&:before, &:after
+	{
+		content : "\0020";
+		display : block;
+		height : 0;
+		overflow : hidden;
+	}
+
+	&:after
+	{
+		clear : both;
+	}
+}
+
+//---------------------------------------------------------------------------------------------------- image replacement
+.ir()
+{
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+	background-color: transparent;
+	border: 0;
+}
+
+//---------------------------------------------------------------------------------------------------- opacity
+.opacity(@opacity)
+{
+	opacity: @opacity / 100;
+	filter: ~"alpha(opacity=@{opacity})";
+}
+
+//---------------------------------------------------------------------------------------------------- remove margins
+.rm()
+{
+	margin: 0;
+}
+
+
+//==================================================================================================== LAYOUT
+//---------------------------------------------------------------------------------------------------- box-sizing
+.box-sizing( @boxmodel )
+{
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+      -ms-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+//---------------------------------------------------------------------------------------------------- block sizes
+.size( @width: 5px, @height: 5px )
+{
+	width: @width;
+	height: @height;
+}
+
+.square( @size: 5px )
+{
+	.size( @size, @size );
+}
+
+//---------------------------------------------------------------------------------------------------- center a block
+.center()
+{
+	display: block;
+	margin: 0 auto;
+}
+
+//---------------------------------------------------------------------------------------------------- tiles - WINDOWS 8 METRO UI
+.tile( 'tiny', 	      @color ) { .column(  7 ); .height(  7 ); }
+.tile( 'small',       @color ) { .column( 15 ); .height( 15 ); }
+.tile( 'medium',      @color ) { .column( 31 ); .height( 15 ); }
+.tile( 'wide-medium', @color ) { .column( 47 ); .height( 15 ); }
+.tile( 'large',       @color ) { .column( 31 ); .height( 31 ); }
+.tile( 'x-large',     @color ) { .column( 47 ); .height( 31 ); }
+.tile( @_, @color )
+{
+	#gradient > .horizontal( @color, darken( @color, 15 ) );
+	margin-bottom: @baselineHeight * 1px;
+	margin-right: @gridColumnWidth;
+}
+
+
+//==================================================================================================== CSS EFFECTS
+//---------------------------------------------------------------------------------------------------- full width backgrounds
+.extend( 'left', @padding: 0 )
+{
+	margin-left: -3000px;
+	padding-left: 3000px + @padding;
+}
+
+.extend( 'right', @padding: 0 )
+{
+	margin-right: -3000px;
+	padding-right: 3000px + @padding;
+}
+
+.extend( 'full', @padding: 0 )
+{
+	.extend( 'left', @padding );
+	.extend( 'right', @padding );
+}
+
+//---------------------------------------------------------------------------------------------------- foldovers
+.foldover( 'left', @size, @color )
+{
+	margin-left: @size * -1;
+
+	&:before 
+	{
+		content: "\0020";
+		position: absolute;
+		bottom: @size / -2; left: 0;
+		.triangle( 'top-right', @size, @color );
+	}
+}
+
+.foldover( 'right', @size, @color )
+{
+	margin-right: @size * -1;
+
+	&:after
+	{
+		content: "\0020";
+		position: absolute;
+		bottom: @size / -2; right: 0;
+		.triangle( 'top-left', @size, @color );
+	}
+}
+
+.foldover( 'both', @size, @color )
+{
+	.foldover( 'left',  @size, @color );
+	.foldover( 'right', @size, @color );
+}
+
+//---------------------------------------------------------------------------------------------------- fadeout text
+.fadeout( @startColor, @endColor )
+{
+	overflow: hidden;
+	background-color: @endColor;
+
+	&:after 
+	{
+		content: "\0020";
+		position: absolute;
+		bottom: 0; left: 0;
+		width: 100%; height: 3em;
+		#gradient > .vertical( @startColor, @endColor );
+		background-repeat: no-repeat;
+		background-position: bottom left;
+		pointer-events: none;
+	}
+}
+
+//---------------------------------------------------------------------------------------------------- polaroid effect
+.polaroid() 
+{
+	padding: 4px;
+	background-color: @white;
+	border: 1px solid rgba(0,0,0,.2);
+	.box-shadow( 0 1px 3px rgba( 0, 0, 0, .1 ) );
+}
+
+
+//==================================================================================================== CSS3 PROPERTIES - PREFIX MASHER
+//---------------------------------------------------------------------------------------------------- border-radius
+.border-radius( @radius )
+{
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+//---------------------------------------------------------------------------------------------------- background-size
+.background-size( @size )
+{
+  -webkit-background-size: @size;
+     -moz-background-size: @size;
+          background-size: @size;
+}
+
+//---------------------------------------------------------------------------------------------------- effects
+.box-shadow( @shadow: 0 1px 3px rgba( 0, 0, 0, .25 ) )
+{
+	-webkit-box-shadow : @shadow;
+	   -moz-box-shadow : @shadow;
+			box-shadow : @shadow;
+}
+
+//---------------------------------------------------------------------------------------------------- transitions
+.transition( @transition )
+{
+	-webkit-transition: @transition;
+	   -moz-transition: @transition;
+	    -ms-transition: @transition;
+	     -o-transition: @transition;
+	        transition: @transition;
+}
+
+.transition-property( @property )
+{
+	-webkit-transition-property: @property;
+	   -moz-transition-property: @property;
+	     -o-transition-property: @property;
+	    -ms-transition-property: @property;
+	        transition-property: @property;
+}
+
+.transition-duration( @duration )
+{ 
+	-webkit-transition-duration: @duration;
+	   -moz-transition-duration: @duration;
+	     -o-transition-duration: @duration;
+	    -ms-transition-duration: @duration;
+	        transition-duration: @duration;
+}
+
+.transition-timing( @function )
+{
+	-webkit-transition-timing-function: @function;
+	   -moz-transition-timing-function: @function;
+	     -o-transition-timing-function: @function;
+	    -ms-transition-timing-function: @function;
+	        transition-timing-function: @function;
+}	        
+ 
+.transition-delay( @delay )
+{
+	-webkit-transition-delay: @delay;
+	   -moz-transition-delay: @delay;
+	     -o-transition-delay: @delay;
+	    -ms-transition-delay: @delay;
+	        transition-delay: @delay;
+}
+
+//---------------------------------------------------------------------------------------------------- transformations
+.rotate(@degrees)
+{
+  -webkit-transform: rotate( @degrees );
+     -moz-transform: rotate( @degrees );
+      -ms-transform: rotate( @degrees );
+       -o-transform: rotate( @degrees );
+          transform: rotate( @degrees );
+}
+
+//---------------------------------------------------------------------------------------------------- gradients
+#gradient {
+	.horizontal(@startColor: #555, @endColor: #333)
+	{
+		background-color: @endColor;
+		background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+		background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
+		background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+		background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+		background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+		background-image: linear-gradient(left, @startColor, @endColor); // Le standard
+		background-repeat: repeat-x;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE9 and down
+	}
+
+	.vertical(@startColor: #555, @endColor: #333)
+	{
+		background-color: mix(@startColor, @endColor, 60%);
+		background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+		background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+		background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+		background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+		background-image: linear-gradient(top, @startColor, @endColor); // The standard
+		background-repeat: repeat-x;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down
+	}
+
+	.radial(@innerColor: #555, @outerColor: #333)
+	{
+		background-color: @outerColor;
+		background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
+		background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
+		background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
+		background-image: -ms-radial-gradient(circle, @innerColor, @outerColor);
+		background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
+		background-repeat: no-repeat;
+	}
+}
+
+#gradient-alpha {
+	.horizontal(@startColor: #555, @endColor: #333)
+	{
+		background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+		background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
+		background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+		background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+		background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+		background-image: linear-gradient(left, @startColor, @endColor); // Le standard
+		background-repeat: repeat-x;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE9 and down
+	}
+
+	.vertical(@startColor: #555, @endColor: #333)
+	{
+		background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+		background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor)); // Safari 4+, Chrome 2+
+		background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+		background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+		background-image: linear-gradient(top, @startColor, @endColor); // The standard
+		background-repeat: repeat-x;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down
+	}
+
+	.radial(@innerColor: #555, @outerColor: #333)
+	{
+		background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@innerColor), to(@outerColor));
+		background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
+		background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
+		background-image: -ms-radial-gradient(circle, @innerColor, @outerColor);
+		background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
+		background-repeat: no-repeat;
+	}
+}

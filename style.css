@@ -1,0 +1,15 @@
+/*
+Theme Name: pxFramework Mashup
+Theme URI: http://pixelplay.gr/themes
+Description: Custom theme for eteriabg.com
+Author: Fotis Spyropoulos
+Author URI: http://phoat.com/
+Version: 0.1
+Tags: 
+*/
+
+/* ---------------------------------------------------------------------------------------------------- IMPORT GOOGLE FONTS */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,800&subset=latin,greek);
+
+/* ---------------------------------------------------------------------------------------------------- IMPORT COMPILED LESS STYLESHEET */
+@import url("css/pxstyles.css");

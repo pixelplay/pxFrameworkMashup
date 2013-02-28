@@ -1,0 +1,71 @@
+// variables.less
+// Variable definitions to customize the look and feel of the site.
+
+// ==================================================================================================== TYPOGRAPHY
+@headFontStack:			'Open Sans', 'Segoe UI', 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@bodyFontStack:			'Segoe UI', 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@codeFontStack:			'Monaco', 'Courier New', monospace;
+
+@baseFont: 				12;
+@baseFontSize:          @baseFont * 1px;
+@baseFontColor:			@grayDarker;
+
+// ==================================================================================================== LAYOUT
+@baselineHeight:		18;
+@basePadding:			10;
+
+@baseline:				@baselineHeight * 1px;
+@pad:					@basePadding * 1px;
+
+// ---------------------------------------------------------------------------------------------------- fixed grid
+@gridColumns:			96;
+@gridColumnWidth:		10px;
+@gridGutterWidth:		 0px;
+@column:				@gridColumnWidth * 1px;
+@gutter:				@gridGutterWidth * 1px;
+
+// ---------------------------------------------------------------------------------------------------- fluid grid
+@totalFluidColumns: 	16;
+@totalGutterColumns:	@totalFluidColumns - 1;
+@gutterWidth: 			1.5%;
+
+@totalGutterWidth: 		@totalGutterColumns * @gutterWidth;
+@totalColumnWidth: 		100% - @totalGutterWidth;
+
+@columnWidth: 			@totalColumnWidth / @totalFluidColumns;
+
+// ---------------------------------------------------------------------------------------------------- layer stacks
+@layer-summit:			100;
+@layer-abyss: 		  	  0;
+
+// ==================================================================================================== COLORS
+// ---------------------------------------------------------------------------------------------------- site colors
+@baseColor:				@blue;
+@compColor:				spin(@baseColor, 180);
+
+@highlightColor:		lighten( @baseColor, 50 );
+@lowlightColor:			darken( @baseColor, 20 );
+
+// ---------------------------------------------------------------------------------------------------- link colors
+@linkColor:				@baseColor;
+@linkColorHover:		lighten(@linkColor, 10);
+@linkColorVisited:		darken(@linkColorHover, 10);
+@linkColorFocus:		darken(@linkColorVisited, 10);
+
+// ---------------------------------------------------------------------------------------------------- generic colors
+@blue:                  #049cdb;
+@green:                 #46a546;
+@red:                   #9d261d;
+@yellow:                #ffc40d;
+@orange:                #f89406;
+@pink:                  #c3325f;
+@purple:                #7a43b6;
+
+// ---------------------------------------------------------------------------------------------------- grayscale
+@black:					rgb(0,0,0);
+@grayDarker:			lighten( @black, 10% );
+@grayDark:				lighten( @black, 25% );
+@gray:					lighten( @black, 50% );
+@grayLight:				lighten( @black, 75% );
+@grayLighter:			lighten( @black, 90% );
+@white:					rgb(255,255,255);
